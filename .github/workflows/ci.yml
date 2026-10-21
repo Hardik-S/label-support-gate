@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+      - name: Install packaging backend
+        run: python -m pip install setuptools
       - name: Build local noneditable package without network dependencies
         run: python -m pip install --no-index --no-deps --no-build-isolation .
       - name: Run acceptance suite
