@@ -1,9 +1,10 @@
 # Local acceptance
 
-From the repository root, use a new virtual environment and an offline, noneditable install. The acceptance helper performs its own checks in a further temporary environment and imports the installed package rather than the source tree.
+From the repository root, use a new virtual environment. The setup step downloads the build backend; the subsequent source install is noneditable and uses that installed backend without index access. Runtime checks are offline. The acceptance helper performs its own checks in a further temporary environment and imports the installed package rather than the source tree.
 
 ```powershell
-py -3.10 -m venv .accept-venv
+python -m venv .accept-venv
+.\.accept-venv\Scripts\python.exe -m pip install setuptools wheel
 .\.accept-venv\Scripts\python.exe -m pip install --no-index --no-deps --no-build-isolation .
 .\.accept-venv\Scripts\python.exe acceptance.py
 ```
